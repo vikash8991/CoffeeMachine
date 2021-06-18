@@ -1,6 +1,7 @@
-package com.ilmt;
+package com.iimt;
 
 import java.util.Scanner;
+
 	public class Main {
 	    private final Scanner scan;
 	    private int milk;
@@ -10,10 +11,13 @@ import java.util.Scanner;
 	    enum Coffee {
 	        LATTE(10, 5),ESPRESSO(75, 9),CAPPUCCINO(100, 10),LONGBLACK(80,18),FILTERCOFFEE(34,30);
 	        
-	        private final int milk;
-	        private final int beans;
+	        private int milk;
+	        private int beans;
 	        
-	        Coffee(int milk, int beans) {
+	        Coffee(int i, int j) {
+				// TODO Auto-generated constructor stub
+			}
+			void Coffee(int milk, int beans) {
 	            this.milk = milk;
 	            this.beans = beans;
 	        }
@@ -25,12 +29,17 @@ import java.util.Scanner;
 	        }
 
 	    }
-	    private Main() {
-	        this.scan = new Scanner(System.in);
+	    private Main(int milk) {
+	        this.milk = milk;
+			this.scan = new Scanner(System.in);
 	        this.milk = 540;
 	        this.beans = 20;
 	    }
-	    public static void main(String[] args) throws InvalidChoiceException{
+	    public Main() {
+			this.scan = null;
+			// TODO Auto-generated constructor stub
+		}
+		public static void main(String[] args) throws InvalidChoiceException{
 	        
 	        Main coffeeMachine = new Main();
 	        String action = coffeeMachine.checkAction();
@@ -77,6 +86,7 @@ import java.util.Scanner;
 	    private void buyCoffee() throws InvalidChoiceException{
 	        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, 4 - longblack, 5 - filtercoffee back - to main menu: ");
 	        String coffee = this.scan.next();
+	        try {
 
 	        switch (coffee) {
 	            case "back": {
@@ -104,8 +114,13 @@ import java.util.Scanner;
 
 	            }default :{
 	            throw new InvalidChoiceException();
-	            }	
-	            }        
+	            }
+	            
+	        }
+	        catch (InsufficientUnitException | InterruptedException | BeanContainerOverCapacityException |
+                    MilkContainerOverCapacityException | InvalidChoiceException e) {
+                    System.err.println(e.toString());
+           }       
 	    }
 
 	    private void fillMachine() {
