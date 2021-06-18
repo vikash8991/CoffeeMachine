@@ -1,4 +1,4 @@
-package com.ilmt;
+package CoffeeMachineException;
 
 public class InvalidChoiceException extends Exception {
     public InvalidChoiceException() {
