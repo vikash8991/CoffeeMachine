@@ -1,4 +1,4 @@
-package CoffeeType;
+package CoffeeMachineModel;
 
 public enum CoffeeType {
 	 LATTE(10, 5),ESPRESSO(75, 9),CAPPUCCINO(100, 10),LONGBLACK(80,18),FILTERCOFFEE(34,30);
